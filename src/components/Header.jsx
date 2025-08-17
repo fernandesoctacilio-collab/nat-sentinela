@@ -59,3 +59,40 @@ const Header = () => {
           {/* Mobile Menu Button */}
           <button 
             className="md:hidden text-gray-700"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
+
+        {/* Mobile Navigation */}
+        {isMenuOpen && (
+          <motion.div 
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3 }}
+            className="md:hidden mt-4 pb-4"
+          >
+            <ul className="flex flex-col space-y-4">
+              {navItems.map((item) => (
+                <li key={item.name}>
+                  <a 
+                    href={item.href} 
+                    className="text-gray-700 hover:text-amber-500 font-medium transition-colors block"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {item.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+        )}
+      </div>
+    </header>
+  );
+};
+
+export default Header;
