@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SentinelA: Jornalismo investigativo com foco em Natividade da Serra. Descomplicando a gestão pública e promovendo transparência na administração pública.">
+    <title>SentinelA - Transparência e Ação Cidadã</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>">
+    
+    <!-- Fontes -->
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #1a3a6e;
+            --secondary: #d4af37;
+            --accent: #e63946;
+            --dark: #2c3e50;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+            --white: #ffffff;
+            --transition: all 0.3s ease;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 10px 15px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 20px 25px rgba(0, 0, 0, 0.1);
+            --border-radius: 8px;
+            --border-radius-lg: 12px;
+            --border-radius-xl: 16px;
+            --border: 1px solid var(--light-gray);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Libre Franklin', sans-serif;
+            line-height: 1.7;
+            color: var(--dark);
+            background-color: var(--light);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--secondary);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: 2px solid var(--primary);
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .btn-primary:hover {
+            background: transparent;
+            color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-secondary {
+            background: var(--secondary);
+            color: var(--primary);
+            border-color: var(--secondary);
+        }
+
+        .btn-secondary:hover {
+            background: transparent;
+            color: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Header */
+        header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 1.8rem;
+            font-weight: 800;
+            text-decoration: none;
+            color: var(--primary);
+        }
+
+        .logo i {
+            color: var(--secondary);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        nav a {
+            color: var(--dark);
+            font-weight: 600;
+            position: relative;
+            padding: 0.5rem 0;
+            font-size: 1.1rem;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary);
+            transition: var(--transition);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, #2c5282 100%);
+            color: white;
+            padding: 8rem 0 6rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://placehold.co/1920x600/1a3a6e/e3e3e3?text=Natividade+da+Serra') no-repeat center center;
+            background-size: cover;
+            opacity: 0.15;
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            color: white;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+            color: white;
+        }
+
+        .hero .btn {
+            margin: 0 0.5rem;
+        }
+
+        /* Destaque */
+        .destaque {
+            padding: 6rem 0;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.8rem;
+            color: var(--primary);
+            display: inline-block;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.3rem;
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            font-weight: 500;
+        }
+
+        .destaque-content {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: var(--border-radius-xl);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .destaque-img {
+            height: 400px;
+            overflow: hidden;
+        }
+
+        .destaque-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .destaque:hover .destaque-img img {
+            transform: scale(1.05);
+        }
+
+        .destaque-text {
+            padding: 2.5rem;
+        }
+
+        .destaque-meta {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            color: var(--gray);
+        }
+
+        .destaque-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .destaque h3 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            line-height: 1.4;
+        }
+
+        .destaque p {
+            color: var(--dark);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        /* Notícias */
+        .noticias {
+            padding: 6rem 0;
+            background: var(--light-gray);
+        }
+
+        .noticias-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .noticia-card {
+            background: white;
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .noticia-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .noticia-img {
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .noticia-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .noticia-card:hover .noticia-img img {
+            transform: scale(1.05);
+        }
+
+        .noticia-content {
+            padding: 1.8rem;
+        }
+
+        .noticia-meta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        .noticia-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .noticia-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            line-height: 1.4;
+        }
+
+        .noticia-card p {
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+
+        .noticia-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tag {
+            background: var(--light-gray);
+            color: var(--gray);
+            padding: 0.3rem 0.8rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* Explica */
+        .explica {
+            padding: 6rem 0;
+            background: white;
+        }
+
+        .explica-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .explica-item {
+            background: white;
+            padding: 2.5rem;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow);
+            border-top: 4px solid var(--secondary);
+            transition: var(--transition);
+        }
+
+        .explica-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .explica-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: white;
+            font-size: 1.8rem;
+        }
+
+        .explica-item h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        /* Atuação */
+        .atuacao {
+            padding: 6rem 0;
+            background: var(--light-gray);
+        }
+
+        .atuacao-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .atuacao-item {
+            text-align: center;
+            padding: 2.5rem 1.8rem;
+            background: white;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .atuacao-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .atuacao-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.8rem;
+            color: white;
+            font-size: 2rem;
+        }
+
+        .atuacao-item h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        /* Newsletter */
+        .newsletter {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, var(--primary) 0%, #2c5282 100%);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .newsletter::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://placehold.co/1920x600/1a3a6e/e3e3e3?text=Comunidade') no-repeat center center;
+            background-size: cover;
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .newsletter-content {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .newsletter h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .newsletter p {
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+            color: white;
+        }
+
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+            gap: 0.8rem;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 1rem 1.2rem;
+            border: none;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+
+        .newsletter-form button {
+            background: var(--secondary);
+            color: var(--primary);
+            border: none;
+            padding: 0 1.8rem;
+            border-radius: 30px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1rem;
+        }
+
+        .newsletter-form button:hover {
+            background: white;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 6rem 0 3rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-column h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1.8rem;
+            color: var(--secondary);
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--secondary);
+        }
+
+        .footer-column p {
+            color: #ccc;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-column a {
+            color: #ccc;
+            text-decoration: none;
+            transition: var(--transition);
+            display: block;
+            padding: 0.3rem 0;
+        }
+
+        .footer-column a:hover {
+            color: var(--secondary);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: var(--transition);
+            font-size: 1.2rem;
+        }
+
+        .social-links a:hover {
+            background: var(--secondary);
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 1rem 1rem;
+            }
+
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                padding: 1.5rem;
+                box-shadow: var(--shadow);
+                border-radius: 0 0 8px 8px;
+                z-index: 100;
+            }
+
+            nav ul.show {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero {
+                padding: 6rem 0 5rem;
+            }
+
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .section-title h2 {
+                font-size: 2.3rem;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .newsletter-form button {
+                padding: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .destaque h3 {
+                font-size: 1.7rem;
+            }
+
+            .btn {
+                padding: 0.7rem 1.5rem;
+                font-size: 0.8rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .animate.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .delay-1 {
+            transition-delay: 0.1s;
+        }
+
+        .delay-2 {
+            transition-delay: 0.2s;
+        }
+
+        .delay-3 {
+            transition-delay: 0.3s;
+        }
+
+        .delay-4 {
+            transition-delay: 0.4s;
+        }
+
+        .delay-5 {
+            transition-delay: 0.5s;
+        }
+
+        /* Custom components */
+        .quote {
+            font-style: italic;
+            padding: 2rem;
+            background: white;
+            border-left: 4px solid var(--secondary);
+            margin: 2rem 0;
+            border-radius: 0 var(--border-radius-lg) var(--border-radius-lg) 0;
+            box-shadow: var(--shadow);
+        }
+
+        .quote p {
+            font-size: 1.2rem;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+
+        .quote-author {
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 1rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--border-radius-lg);
+            text-align: center;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--gray);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <i class="fas fa-shield-alt"></i>
+                <span>SentinelA</span>
+            </a>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul>
+                    <li><a href="#destaque">Destaque</a></li>
+                    <li><a href="#noticias">Notícias</a></li>
+                    <li><a href="#explica">Sentinela Explica</a></li>
+                    <li><a href="#atuacao">Áreas de Atuação</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content animate">
+                <h1>Transparência e Ação Cidadã</h1>
+                <p>Jornalismo investigativo com foco em Natividade da Serra e região. Descomplicando a gestão pública para todos os cidadãos.</p>
+                <div>
+                    <a href="#destaque" class="btn btn-primary">Ver Destaque</a>
+                    <a href="#explica" class="btn btn-secondary">Aprender Mais</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Destaque -->
+    <section id="destaque" class="destaque">
+        <div class="container">
+            <div class="section-title animate">
+                <h2>Manchete da Semana</h2>
+                <p class="section-subtitle">Nossa investigação mais recente e impactante</p>
+            </div>
+            
+            <div class="destaque-content animate delay-1">
+                <div class="destaque-img">
+                    <img src="https://placehold.co/900x400/e3e3e3/1a3a6e?text=Investigação+em+Natividade+da+Serra" alt="Investigação sobre contratos públicos em Natividade da Serra">
+                </div>
+                <div class="destaque-text">
+                    <div class="destaque-meta">
+                        <span><i class="far fa-calendar"></i> 15 de Junho de 2025</span>
+                        <span><i class="far fa-user"></i> Equipe SentinelA</span>
+                        <span><i class="fas fa-tags"></i> Contratos Públicos</span>
+                    </div>
+                    <h3>Fiscalização Revela Irregularidades em Contratos de Saúde e Educação</h3>
+                    <p>Nossa equipe investigou documentos oficiais e realizou entrevistas com fontes dentro da prefeitura, revelando possíveis desvios em contratos essenciais para a população de Natividade da Serra. O relatório completo mostra como milhões de reais destinados à saúde e educação podem ter sido mal utilizados.</p>
+                    <p>O que mais preocupa é o padrão recorrente de contratações diretas sem justificativa legal adequada, o que fere os princípios da administração pública. Documentos obtidos via Lei de Acesso à Informação mostram que empresas com ligações entre si foram beneficiadas em sucessivos contratos.</p>
+                    
+                    <div class="quote">
+                        <p>"A transparência não é um favor que o poder público faz à sociedade. É um direito fundamental do cidadão saber como seus impostos são gastos."</p>
+                        <div class="quote-author">— Ana Claudia Quintana Arantes, médica e escritora</div>
+                    </div>
+                    
+                    <a href="#" class="btn btn-primary">Abrir Reportagem Completa</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Notícias -->
+    <section id="noticias" class="noticias">
+        <div class="container">
+            <div class="section-title animate">
+                <h2>Últimas Notícias</h2>
+                <p class="section-subtitle">Todas as investigações e reportagens recentes</p>
+            </div>
+            
+            <div class="noticias-grid">
+                <article class="noticia-card animate delay-1">
+                    <div class="noticia-img">
+                        <img src="https://placehold.co/400x220/e3e3e3/1a3a6e?text=Infraestrutura" alt="Problemas na infraestrutura de Natividade da Serra">
+                    </div>
+                    <div class="noticia-content">
+                        <div class="noticia-meta">
+                            <span><i class="far fa-calendar"></i> 14/06/2025</span>
+                            <span><i class="far fa-user"></i> Redação</span>
+                        </div>
+                        <div class="noticia-tags">
+                            <span class="tag">Infraestrutura</span>
+                            <span class="tag">Denúncia</span>
+                        </div>
+                        <h3>Principais estradas do município apresentam problemas estruturais</h3>
+                        <p>Moradores denunciam buracos e falta de sinalização em vias importantes. Relatório técnico aponta risco de acidentes e necessidade de intervenção urgente.</p>
+                        <a href="#" class="btn btn-outline">Ler mais</a>
+                    </div>
+                </article>
+
+                <article class="noticia-card animate delay-2">
+                    <div class="noticia-img">
+                        <img src="https://placehold.co/400x220/e3e3e3/1a3a6e?text=Educação" alt="Situação da educação em Natividade da Serra">
+                    </div>
+                    <div class="noticia-content">
+                        <div class="noticia-meta">
+                            <span><i class="far fa-calendar"></i> 12/06/2025</span>
+                            <span><i class="far fa-user"></i> Jornalismo Investigativo</span>
+                        </div>
+                        <div class="noticia-tags">
+                            <span class="tag">Educação</span>
+                            <span class="tag">Investigação</span>
+                        </div>
+                        <h3>Escolas rurais enfrentam falta de recursos e professores</h3>
+                        <p>Levantamento mostra que 60% das escolas do campo operam com menos da metade do quadro docente necessário. Alunos estão sendo prejudicados no aprendizado básico.</p>
+                        <a href="#" class="btn btn-outline">Ler mais</a>
+                    </div>
+                </article>
+
+                <article class="noticia-card animate delay-3">
+                    <div class="noticia-img">
+                        <img src="https://placehold.co/400x220/e3e3e3/1a3a6e?text=Meio+Ambiente" alt="Questões ambientais em Natividade da Serra">
+                    </div>
+                    <div class="noticia-content">
+                        <div class="noticia-meta">
+                            <span><i class="far fa-calendar"></i> 10/06/2025</span>
+                            <span><i class="far fa-user"></i> Equipe de Campo</span>
+                        </div>
+                        <div class="noticia-tags">
+                            <span class="tag">Meio Ambiente</span>
+                            <span class="tag">Denúncia</span>
+                        </div>
+                        <h3>Desmatamento ilegal preocupa comunidades tradicionais</h3>
+                        <p>Áreas de proteção ambiental estão sendo invadidas por madeireiras irregulares, colocando em risco a biodiversidade local e o modo de vida de comunidades tradicionais.</p>
+                        <a href="#" class="btn btn-outline">Ler mais</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sentinela Explica -->
+    <section id="explica" class="explica">
+        <div class="container">
+            <div class="section-title animate">
+                <h2>Sentinela Explica</h2>
+                <p class="section-subtitle">Descomplicando conceitos de gestão pública para todos</p>
+            </div>
+            
+            <div class="explica-container">
+                <div class="explica-item animate delay-1">
+                    <div class="explica-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3>Como funciona o orçamento público</h3>
+                    <p>Guia completo para entender como o dinheiro público é arrecadado, aprovado e aplicado no município de Natividade da Serra. Aprenda a ler os documentos oficiais e acompanhar as despesas.</p>
+                    <a href="#" class="btn btn-outline">Ler explicação</a>
+                </div>
+
+                <div class="explica-item animate delay-2">
+                    <div class="explica-icon">
+                        <i class="fas fa-gavel"></i>
+                    </div>
+                    <h3>Direitos do cidadão</h3>
+                    <p>Conheça seus direitos fundamentais e como exigir serviços públicos de qualidade em sua comunidade. Saiba como fazer denúncias e acompanhar as respostas do poder público.</p>
+                    <a href="#" class="btn btn-outline">Ler explicação</a>
+                </div>
+
+                <div class="explica-item animate delay-3">
+                    <div class="explica-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>Como fazer uma denúncia</h3>
+                    <p>Passo a passo para registrar denúncias de corrupção e irregularidades de forma segura e eficaz. Entenda os canais oficiais e como proteger sua identidade.</p>
+                    <a href="#" class="btn btn-outline">Ler explicação</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Áreas de Atuação -->
+    <section id="atuacao" class="atuacao">
+        <div class="container">
+            <div class="section-title animate">
+                <h2>Áreas de Atuação</h2>
+                <p class="section-subtitle">Nossos focos principais de investigação e monitoramento</p>
+            </div>
+            
+            <div class="atuacao-container">
+                <div class="atuacao-item animate delay-1">
+                    <div class="atuacao-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h3>Transparência Pública</h3>
+                    <p>Fiscalização de contratos, licitações e uso do dinheiro público. Acompanhamento de processos administrativos e decisões da prefeitura e câmara.</p>
+                </div>
+
+                <div class="atuacao-item animate delay-2">
+                    <div class="atuacao-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <h3>Saúde</h3>
+                    <p>Monitoramento da qualidade dos serviços de saúde, acesso à medicamentos, condições dos postos de saúde e desempenho dos programas municipais.</p>
+                </div>
+
+                <div class="atuacao-item animate delay-3">
+                    <div class="atuacao-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Educação</h3>
+                    <p>Verificação das condições das escolas, merenda escolar, transporte, formação dos professores e desempenho dos alunos em avaliações oficiais.</p>
+                </div>
+
+                <div class="atuacao-item animate delay-4">
+                    <div class="atuacao-icon">
+                        <i class="fas fa-tree"></i>
+                    </div>
+                    <h3>Meio Ambiente</h3>
+                    <p>Proteção das áreas verdes, combate ao desmatamento, gestão de resíduos, qualidade do ar e da água, e preservação da fauna e flora local.</p>
+                </div>
+
+                <div class="atuacao-item animate delay-5">
+                    <div class="atuacao-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3>Habitação</h3>
+                    <p>Fiscalização de programas habitacionais, condições de moradia, regularização fundiária e políticas de urbanismo e mobilidade urbana.</p>
+                </div>
+
+                <div class="atuacao-item animate delay-6">
+                    <div class="atuacao-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Social</h3>
+                    <p>Monitoramento de programas de assistência social, combate à pobreza, inclusão de pessoas com deficiência e políticas para grupos vulneráveis.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section id="newsletter" class="newsletter">
+        <div class="container">
+            <div class="newsletter-content animate">
+                <h2>Fique por dentro das investigações</h2>
+                <p>Inscreva-se para receber nossos relatórios exclusivos diretamente no seu e-mail. Seja o primeiro a saber quando publicamos uma nova investigação.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Seu melhor e-mail" required>
+                    <button type="submit">Inscrever-se</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contato">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>SentinelA</h3>
+                    <p>Jornalismo investigativo com foco em Natividade da Serra e região. Comprometidos com a verdade e o bem comum, descomplicando a gestão pública para todos os cidadãos.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Links Rápidos</h3>
+                    <ul>
+                        <li><a href="#destaque">Destaque</a></li>
+                        <li><a href="#noticias">Notícias</a></li>
+                        <li><a href="#explica">Sentinela Explica</a></li>
+                        <li><a href="#atuacao">Áreas de Atuação</a></li>
+                        <li><a href="#">Denuncie</a></li>
+                        <li><a href="#">Acompanhe</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Transparência</h3>
+                    <ul>
+                        <li><a href="#">Nossa Metodologia</a></li>
+                        <li><a href="#">Código de Ética</a></li>
+                        <li><a href="#">Fontes</a></li>
+                        <li><a href="#">Como Verificamos</a></li>
+                        <li><a href="#">Correções</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Contato</h3>
+                    <ul>
+                        <li><a href="mailto:contato@sentinelasite.com"><i class="fas fa-envelope"></i> contato@sentinelasite.com</a></li>
+                        <li><a href="tel:+551234567890"><i class="fas fa-phone"></i> (12) 3456-7890</a></li>
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> Natividade da Serra, SP</a></li>
+                        <li><a href="#"><i class="fas fa-handshake"></i> Colabore com a Investigação</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 SentinelA - Transparência e Ação Cidadã. Todos os direitos reservados.</p>
+                <p>Este é um projeto independente de jornalismo investigativo. Não recebemos verbas públicas e somos financiados por doações da comunidade.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navMenu = document.querySelector('nav ul');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('show');
+        });
+
+        // Close menu when clicking on a link
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('show');
+            });
+        });
+
+        // Animation on scroll
+        const animateElements = document.querySelectorAll('.animate');
+        
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        animateElements.forEach(element => {
+            observer.observe(element);
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Newsletter form submission
+        const newsletterForm = document.querySelector('.newsletter-form');
+        if (newsletterForm) {
+            newsletterForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = this.querySelector('input[type="email"]').value;
+                alert(`Obrigado! O e-mail ${email} foi cadastrado com sucesso.\nEm breve você receberá nossas atualizações.`);
+                this.reset();
+            });
+        }
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+            } else {
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+                header.style.background = 'white';
+            }
+        });
+    </script>
+</body>
+</html>
