@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Scale, HeartPulse, GraduationCap, Home, Users } from 'lucide-react';
+import { Scale, HeartPulse, GraduationCap, Leaf, Home, Users } from 'lucide-react';
 // Substituí Tree por Leaf, que é o nome correto no lucide-react
 import { Leaf } from 'lucide-react';
 
@@ -31,7 +31,7 @@ const AreasSection = () => {
       color: "bg-green-500"
     },
     {
-      icon: <Home size={24} />,
+      icon: <Leaf size={24} />, ...} // Novo,
       title: "Habitação",
       description: "Fiscalização de programas habitacionais, condições de moradia, regularização fundiária e políticas de urbanismo e mobilidade urbana.",
       color: "bg-purple-500"
